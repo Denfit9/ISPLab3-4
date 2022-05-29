@@ -3,8 +3,19 @@
 <title>Home</title>
 {% endblock %}
 
-{%block body%}
+{% block body %} {%endblock%}
+{%block content%}
 <div class="container">
     <h1>Welcome to the tickets page</h1>
+    {% if tickets %}
+        {% for el in tickets %}
+         <div class="alert alert-warning mt-2">
+               <h3>{{el.title}}</h3>
+                <p>{{el.description}}</p>
+            </div>
+        {%endfor%}
+    {% else %}
+        <p>No tickets yet</p>
+    {% endif %}
 </div>
 {% endblock%}
