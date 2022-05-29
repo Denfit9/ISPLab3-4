@@ -7,28 +7,57 @@
 
     {%block head%}
     <title>Login</title>
-
     {%endblock%}
 </head>
-<body>
-    <br>
-    <div class="container">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Tickets, coupons and everything like this</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      <a class="nav-item nav-link" href="/main/">Home</a>
-      <a class="nav-item nav-link" href="#">Tickets</a>
-      <a class="nav-item nav-link" href="/main/register">Register</a>
-      <a class="nav-item nav-link" href="/main/login">Login</a>
-    </div>
-  </div>
 
-</nav>
-        </nav></div>
+<body>
+
+    <style>
+        body{
+        background:Turquoise;
+        color:white;
+        }
+        a {
+        height: 42px;
+	    border: none;
+	    background: none;
+	    color: #f2f2f2;
+	    padding: 10px;
+	    font-size: 12px;
+	    border-radius: none;
+	    position: relative;
+	    box-sizing: border-box;
+	    transition: all 500ms ease;
+        }
+        a:hover {
+	    background: rgba(0,0,0,0);
+	    color: #E0FFFF;
+	    box-shadow: inset 0 0 0 3px #40E0D0;
+        }
+    </style>
+    <br>
+<div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/main/">Tickets, coupons and everything like this</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar">
+            {% if user.is_authenticated %}
+            <ul class="navbar-nav">
+                <a class="nav-item nav-link" href="/main/">Home</a>
+                <a class="nav-item nav-link" href="/main/tickets/">Tickets</a>
+                <a class="nav-item nav-link" href="/main/change-password">Change password</a>
+                <a class="nav-item nav-link" href="/main/logout">Logout</a>
+            </ul>
+            {% else %}
+            <ul class="navbar-nav navbar-right float-xs-right">
+                <a class="nav-item nav-link" href="/main/register">Register</a>
+                <a class="nav-item nav-link" href="/main/login">Login</a>
+            </ul>
+            {% endif %} </div>
+    </nav>
+</div>
 
 {% block body%}
 <h1>base</h1>
