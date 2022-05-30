@@ -1,0 +1,22 @@
+{%extends 'base.html'%}
+{% load crispy_forms_tags %}
+{% block head %}
+<title>Create ticket</title>
+{% endblock %}
+
+{% block body %} {%endblock%}
+{%block content%}
+<form action="" method="post", autocomplete="off">
+    {%csrf_token%}
+    {{form.title|as_crispy_field}}
+    {{form.description|as_crispy_field}}
+    {{form.category|as_crispy_field}}
+    <br>
+
+    <button type="submit" class="btn btn-success"><i class="fa-solid fa-floppy-disk"></i> Submit</button>
+    <a href="/main/tickets/" class="btn btn-secondary btn-block btn-ld">
+        <i class="fas fa-stream"></i> Back to tickets
+    </a>
+</form>
+
+{% endblock%}

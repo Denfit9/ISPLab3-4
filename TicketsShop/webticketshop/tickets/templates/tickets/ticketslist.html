@@ -2,20 +2,43 @@
 {% block head %}
 <title>Home</title>
 {% endblock %}
-
 {% block body %} {%endblock%}
 {%block content%}
 <div class="container">
     <h1>Welcome to the tickets page</h1>
+
+    <script>function view(n) {
+    style = document.getElementById(n).style;
+    style.display = (style.display == 'block') ? 'none' : 'block';
+}</script>
     {% if tickets %}
         {% for el in tickets %}
+
          <div class="alert alert-warning mt-2">
                <h3>{{el.title}}</h3>
-                <p>{{el.description}}</p>
+                <p><Strong>Category : {{el.category}}</Strong></p>
+                <a href="#{{el.id}}" onclick="view('{{el.id}}');window.open('https://www.youtube.com/watch?v=hU6rKPxx50Q'); return false " >Show details!</a>
+                <div id="{{el.id}}" style="display: none;">
+                <p>{{el.description}}</p></div>
+                <br>
+             {% if user.is_superuser %}
+                <a href ="{% url 'ticket_update' el.id %}" class ="btn text-secondary px-0" ><i class ="far fa-edit fa-lg"></i></a>
+                <form action ="{% url 'ticket_delete' el.id %}" method="post" class="d-inline">
+                    {% csrf_token %}
+                    <button type="submit" class="btn"> <i class="fa-solid fa-trash"></i> </button>
+                </form>
+             {%endif%}
+
             </div>
         {%endfor%}
     {% else %}
-        <p>No tickets yet</p>
+     <script>
+        var i;
+        for (i = 0; i < 10; i++) {
+            document.write("<br>");
+        }
+    </script>
+    <p  align="center" text-allign = center ><strong> No tickets yet</strong></p>
     {% endif %}
 </div>
 {% endblock%}
