@@ -17,18 +17,17 @@
          <div class="alert alert-warning mt-2">
                <h3>{{el.title}}</h3>
                 <p><Strong>Category : {{el.category}}</Strong></p>
-                <a href="#{{el.id}}" onclick="view('{{el.id}}');window.open('https://www.youtube.com/watch?v=hU6rKPxx50Q'); return false " >Show details!</a>
+                <a href="#{{el.id}}" onclick="view('{{el.id}}'); window.open('https://www.youtube.com/watch?v=hU6rKPxx50Q'); return false " >Show details!</a>
                 <div id="{{el.id}}" style="display: none;">
                 <p>{{el.description}}</p></div>
                 <br>
              {% if user.is_superuser %}
-                <a href ="{% url 'ticket_update' el.id %}" class ="btn text-secondary px-0" ><i class ="far fa-edit fa-lg"></i></a>
+                <a href ="{% url 'ticket_update' el.id %}" class ="btn text-secondary px-0" ><i class ="far fa-edit fa-lg"></i> Edit ticket</a>
                 <form action ="{% url 'ticket_delete' el.id %}" method="post" class="d-inline">
                     {% csrf_token %}
-                    <button type="submit" class="btn"> <i class="fa-solid fa-trash"></i> </button>
+                    <button type="submit" class="btn"> <i class="fa-solid fa-trash"></i> Delete ticket</button>
                 </form>
              {%endif%}
-
             </div>
         {%endfor%}
     {% else %}
