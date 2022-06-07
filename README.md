@@ -26,3 +26,5 @@ http://denfit-django-h3t0v.tw1.ru/main/login/
 
 И редактировать информацию об акции 
 ![image](https://user-images.githubusercontent.com/79207007/172241622-7d0a3cc9-1248-4c3f-97d7-59c7dae0cabb.png)
+
+Ссылка на докер https://hub.docker.com/repository/docker/denfit9/webticketshop
